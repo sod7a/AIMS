@@ -1391,6 +1391,8 @@ def export_report(type):
     
     return send_file(output, as_attachment=True, download_name=filename, mimetype='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
 
-if __name__ == '__main__':
-    # Run on port 5020 to avoid conflicts with previous app
-    app.run(debug=True, port=5020)
+import os
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
